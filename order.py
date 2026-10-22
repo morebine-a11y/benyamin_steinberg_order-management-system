@@ -37,7 +37,7 @@ class Order(ABC):
         self.order_id = order_id
         self.name = name
         self.delivery_address = delivery_address
-        self.items = items
+        self.items = list(items)
         self.customer = customer
         self.payment_type = payment_type
         self.order_date = order_date

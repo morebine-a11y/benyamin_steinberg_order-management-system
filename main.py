@@ -61,3 +61,13 @@ try:
     RegularOrder(1, "Dup", "X", [lamp], reg, PaymentType.CASH)
 except ValueError as e:
     print("Order:", e)
+
+print("Test 8: A failed VIP order leaves no trace")
+mug = OrderItem(5, "Mug", 8)
+try:
+    VIPOrder(5, "Order E", "Tel Aviv", [mug], reg, PaymentType.CASH)
+except NotVipCustomerError:
+    print("Blocked. Mug in favorites (expect False):",
+          "Mug" in [i.name for i in reg.favorite_items])
+retry = RegularOrder(5, "Order E", "Tel Aviv", [mug], reg, PaymentType.CASH)
+print("Order id 5 still free, retry worked:", retry.order_id)
