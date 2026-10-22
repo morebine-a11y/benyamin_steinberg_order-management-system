@@ -60,3 +60,17 @@ The spec left some things open. Here is what I chose.
 - **VIP check:** `NotVipCustomerError` is raised while the VIP total is being calculated, before the order id is registered and before the customer's favorites change. A failed order leaves nothing behind.
 - **Validate first:** every constructor checks its input before registering an id, so a failed constructor doesn't use one up.
 - **Item list:** an order keeps its own copy of the items list, so changing the original list later doesn't affect the order.
+
+
+
+## Bonus: Animals and Pets
+
+Lives in the `bonus/` folder. Run it with `python bonus/demo.py`.
+
+- `Animal` is abstract (`eat` must be implemented). It holds the leg count and a shared `walk`.
+- `Pet` is an interface, built as an abstract class with only abstract methods.
+- `Spider` is an Animal. `Cat` and `Fish` are Animals that also implement `Pet`.
+- Python has no constructor overloading, so `Cat` uses a default name to cover `Cat(name)` and `Cat()`.
+- `Fish` overrides `walk`, since a fish can't walk.
+- The diagram has no composition arrows, so only inheritance and an interface are used.
+- Method names (`getName`, `setName`) are kept exactly as drawn in the diagram.
